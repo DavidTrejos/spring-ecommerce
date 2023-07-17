@@ -75,7 +75,7 @@ public class ProductoController {
 		return "redirect:/productos";
 	}
 	
-	@GetMapping("/edit/ id")
+	@GetMapping("/edit/{id}")
 	public  String edit(@PathVariable Integer id, Model model) {
 		
 		Producto producto =  new Producto();
