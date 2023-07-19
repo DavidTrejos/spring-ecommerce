@@ -11,3 +11,4 @@ import com.curso.ecommerce.model.DetalleOrden;
 public interface IDetalleOrdenRepository extends JpaRepository<DetalleOrden, Integer> {
 
 }
+
