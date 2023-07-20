@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -184,4 +185,24 @@ public class HomeController {
 		
 		return "redirect:/";
 	}
+	
+	@PostMapping ("/search")
+	public String searchProduct(@RequestParam String nombre, Model model) {
+		log.info("Nombre del producto: {}", nombre);
+		
+		/**
+		 * 1. Obtiene todos los productos con findAll
+		 * 2. Hace un stream para recorrerlos
+		 * 3. Se aplica la función filter 
+		 * 4. Se le pasa el predicado (Que es lo que queremos hacer)  y a través de una función anónima trae el nombre del producto.
+		 * 5. Con la función contains se le pasa el String que queremos que verifique si se repite.
+		 * 6. Luego que nos devuelva como una lista con Collect to List
+		 */
+		  
+		List<Producto> productos = productoService.findAll().stream().filter(p  -> p.getNombre().contains(nombre)).collect(Collectors.toList());
+		model.addAttribute("productos" ,productos);
+		
+		return "usuario/home";
+	}
+	
 }
