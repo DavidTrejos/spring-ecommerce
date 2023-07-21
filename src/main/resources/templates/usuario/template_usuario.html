@@ -87,6 +87,7 @@
 							aria-haspopup="true" aria-expanded="false"> USER</a>
 							<div class="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink">
+								<a class="dropdown-item" th:href="@{/usuario/compras}">Compras</a>
 								<a class="dropdown-item" th:href="@{/getCart}">Carrito</a>
 							</div></li>
 
@@ -98,16 +99,9 @@
 
 	<!-- Footer -->
 
-	<div th:fragment="footer">
-		<footer class="py-5 bg-dark">
-			<div class="container">
-				<p class="m-0 text-center text-white">Copyright &copy; Spring
-					eCommerce 2021</p>
-			</div>
-			<!-- /.container -->
-		</footer>
 
-	</div>
+		
+	<div th:include="usuario/template_usuario.html::footer"></div>
 
 
 	<!-- Bootstrap core JavaScript -->
