@@ -15,6 +15,8 @@ import com.curso.ecommerce.service.IUsuarioService;
 
 import jakarta.servlet.http.HttpSession;
 
+
+
 @Controller
 @RequestMapping("/usuario")
 public class UsuarioController {
@@ -46,16 +48,15 @@ public class UsuarioController {
 
 	@PostMapping("/acceder")
 	public String acceder(Usuario usuario, HttpSession session) {
-		logger.info("Accesos: {}", usuario);
+		logger.info("Accesos:  {}", usuario);
 
 		Optional<Usuario> user = usuarioService.findByEmail(usuario.getEmail());
-		logger.info("Usuario de db: {}", user.get());
+		//logger.info("Usuario de db: {}", user.get());
 
 		if (user.isPresent()) {
-
 			session.setAttribute("idusuario", user.get().getId());
 			if (user.get().getTipo().equals("ADMIN")) {
-				return "redirect:/admin";
+				return "redirect:/administrador";
 			} else {
 				return "redirect:/";
 			}
